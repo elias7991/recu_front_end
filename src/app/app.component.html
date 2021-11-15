@@ -7,9 +7,35 @@
   </mat-toolbar>
 </p>
 <mat-tab-group>
-  <mat-tab label="Productos">Administración de Productos</mat-tab>
-  <mat-tab label="Clientes"><app-clientes></app-clientes></mat-tab>
-  <mat-tab label="Registro ventas">Registro de ventas de producto a un cliente</mat-tab>
-  <mat-tab label="Resumen ventas">Resumen de todas las ventas</mat-tab>
-  <mat-tab label="Desatalles ventas">Desatalles de todas las ventas</mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">store</mat-icon>
+      Productos
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">group</mat-icon>
+      Clientes
+    </ng-template>
+    <app-clientes></app-clientes>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">add_shopping_cart</mat-icon>
+      Registro ventas
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">assignment_ind</mat-icon>
+      Resumen ventas
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">assignment</mat-icon>
+      Detalles ventas
+    </ng-template>
+  </mat-tab>
 </mat-tab-group>
