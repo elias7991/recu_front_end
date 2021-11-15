@@ -2,6 +2,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientesComponent } from './clientes/clientes.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -13,7 +18,12 @@ import { ClientesComponent } from './clientes/clientes.component';
     ClientesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class ComponentsModule { }
