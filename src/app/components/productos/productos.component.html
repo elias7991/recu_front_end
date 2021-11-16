@@ -1,0 +1,72 @@
+<mat-card>
+
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let producto of productosArray">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ producto.nombre }}
+            </mat-panel-title>
+            <mat-panel-description>
+              Cod: {{ producto.codigo }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card class="example-card">
+            <mat-card-title-group>
+              <mat-card-subtitle>Nombre: {{ producto.existencia }}</mat-card-subtitle>
+              <mat-card-subtitle>Precio: {{ producto.precio }}</mat-card-subtitle>
+
+            </mat-card-title-group>
+            <button mat-mini-fab color="primary" >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card>
+        </mat-expansion-panel>
+      </li>
+    </ul>
+  </mat-card-content>
+  <mat-card-content>
+    <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-title>Hola</mat-card-title>
+        </mat-card-title-group>
+
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Código</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.codigo">
+          <mat-hint>Código de producto</mat-hint>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Código</mat-label>
+          <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.nombre">
+          <mat-hint>Código de producto</mat-hint>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Código</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.precio">
+          <mat-hint>Código de producto</mat-hint>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Código</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.existencia">
+          <mat-hint>Código de producto</mat-hint>
+        </mat-form-field>
+        <br>
+        <mat-card-actions align="end">
+          <button mat-fab color="primary" (click)="addOrEdit()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-card-actions>
+      
+    </mat-card>
+  </mat-card-content>
+
+
+</mat-card>
