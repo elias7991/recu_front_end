@@ -37,26 +37,26 @@
 
         <mat-form-field appearance="fill" floatLabel="always">
           <mat-label>Código</mat-label>
-          <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.codigo">
+          <input matInput type="number" class="example-right-align" placeholder="Codigo" [(ngModel)]="selectedProducto.codigo" required>
           <mat-hint>Código de producto</mat-hint>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" floatLabel="always">
-          <mat-label>Código</mat-label>
-          <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.nombre">
-          <mat-hint>Código de producto</mat-hint>
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" class="example-right-align" placeholder="Nombre" [(ngModel)]="selectedProducto.nombre" required>
+          <mat-hint>Nombre del producto</mat-hint>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" floatLabel="always">
-          <mat-label>Código</mat-label>
-          <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.precio">
-          <mat-hint>Código de producto</mat-hint>
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="Precio" [(ngModel)]="selectedProducto.precio" required>
+          <mat-hint>Precio de producto en Gs.</mat-hint>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" floatLabel="always">
-          <mat-label>Código</mat-label>
-          <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="selectedProducto.existencia">
-          <mat-hint>Código de producto</mat-hint>
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" class="example-right-align" placeholder="Cantidad" [(ngModel)]="selectedProducto.existencia" required>
+          <mat-hint>Cantidad en stock</mat-hint>
         </mat-form-field>
         <br>
         <mat-card-actions align="end">

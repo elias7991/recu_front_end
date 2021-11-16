@@ -9,6 +9,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     MatExpansionModule,
     MatFormFieldModule,
     FormsModule,
+    MatInputModule,
   ]
 })
 export class ComponentsModule { }
