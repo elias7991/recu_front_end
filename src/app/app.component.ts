@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+// AQUI IMPORTAMOS LA CLASE CLIENTE
+//import { Cliente } from "./models/cliente";
 
 
 @Component({
@@ -8,4 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  //instanciamos la clase Cliente
+  //arrayClientes: Cliente[] = [];
+
 }

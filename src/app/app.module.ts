@@ -13,11 +13,13 @@ import { ComponentsModule } from "./components/components.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    //Este es el componente que esta dentro de components que llama a las apps
+    ComponentsModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {ProductosComponent} from "./productos/productos.component";
+import { ClientesComponent } from './clientes/clientes.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatListModule} from "@angular/material/list";
@@ -15,8 +16,10 @@ import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     ProductosComponent,
+    ClientesComponent
   ],
   exports: [
+    ClientesComponent,
     ProductosComponent,
   ],
   imports: [
