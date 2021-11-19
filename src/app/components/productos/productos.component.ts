@@ -23,12 +23,26 @@ export class ProductosComponent implements OnInit {
   selectedProducto: Producto = new Producto();
 
   addOrEdit(){
-    this.productosArray.push(this.selectedProducto);
+    if(!this.productosArray.includes(this.selectedProducto)){
+      this.productosArray.push(this.selectedProducto);
+    }
     this.selectedProducto = new Producto();
+  }
+
+  openForEdit(producto: Producto){
+    this.selectedProducto = producto;
   }
 
   getArray(){
     return this.productosArray
+  }
+
+  delete(producto: Producto){
+    if(confirm("Desea eliminar?")){
+      this.selectedProducto = producto;
+      this.productosArray = this.productosArray.filter(x => x != this.selectedProducto);
+      this.selectedProducto = new Producto();
+    }
   }
 
 }

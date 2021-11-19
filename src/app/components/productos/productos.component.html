@@ -18,10 +18,11 @@
               <mat-card-subtitle>Precio: {{ producto.precio }}</mat-card-subtitle>
 
             </mat-card-title-group>
-            <button mat-mini-fab color="primary" >
+            <button mat-mini-fab color="primary" (click)="openForEdit(producto)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="primary">
+            <button mat-mini-fab color="primary"
+              (click)="delete(producto)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card>
@@ -64,7 +65,7 @@
             <mat-icon>add</mat-icon>
           </button>
         </mat-card-actions>
-      
+
     </mat-card>
   </mat-card-content>
 
