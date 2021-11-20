@@ -74,6 +74,22 @@ export class ClientesComponent implements OnInit {
     return this.ruc.hasError('required')?'Debe ingresar su ruc':'';
   }
 
-  //funcion para guardar datos del formulario
+  //funcion encargada de agregar un cliente
+  addPersona(ruc: string, nombre: string, email: string){
+    this.arrayClientes.push({ruc: ruc, nombre: nombre, email: email});
+    this.nombre.reset();
+    this.ruc.reset();
+    this.email.reset();
+  }
+
+  //funcion encargada de eliminar un cliente
+  deletePersona(cliente: Cliente) {
+    this.arrayClientes.splice(this.arrayClientes.indexOf(cliente),1);
+  }
+
+  //funcion encargada de editar una persona
+  editPersona() {
+
+  }
 
 }
