@@ -15,12 +15,21 @@ export class ProductosComponent implements OnInit {
       this.productosArray = this.productosService.getProductos();
   }
   public productosArray: Producto[] = [];
+  private edit = false;
+  // Producto elegido
   selectedProducto: Producto = new Producto();
+  // Copia a mostrar
+  newProducto: Producto = new Producto();
 
   addOrEdit(){
     // Variable para control de error
     let error = false;
     this.productosArray = this.productosArray = this.productosService.getProductos();
+    // Copia guardar como elegido
+    this.selectedProducto.nombre = this.newProducto.nombre;
+    this.selectedProducto.codigo = this.newProducto.codigo;
+    this.selectedProducto.precio = this.newProducto.precio;
+    this.selectedProducto.existencia = this.newProducto.existencia;
 
     //Si el producto no existe, o sea, si no es una edicion
     if(!this.productosArray.includes(this.selectedProducto)){
@@ -72,17 +81,32 @@ export class ProductosComponent implements OnInit {
         }
       }
       if(!error){
+        this.edit = false;
         this.productosService.setProductos(this.selectedProducto);
         this.productosArray = this.productosService.getProductos();
       }
     }
     if(!error){
       this.selectedProducto = new Producto();
+      this.newProducto = new Producto();
     }
   }
 
   openForEdit(producto: Producto){
+    this.newProducto = new Producto();
     this.selectedProducto = producto;
+
+    //copia del seleccionado
+    this.newProducto.nombre = this.selectedProducto.nombre;
+    this.newProducto.codigo = this.selectedProducto.codigo;
+    this.newProducto.precio = this.selectedProducto.precio;
+    this.newProducto.existencia = this.selectedProducto.existencia;
+  }
+
+  nuevo(){
+    // Borrar elegido y copia
+    this.selectedProducto = new Producto();
+    this.newProducto = new Producto();
   }
 
 
