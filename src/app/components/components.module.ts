@@ -12,6 +12,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 
 @NgModule({
@@ -21,19 +22,20 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   exports: [
     ClientesComponent
   ],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatGridListModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    MatRadioModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatGridListModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        MatRadioModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSidenavModule
+    ]
 })
 export class ComponentsModule { }

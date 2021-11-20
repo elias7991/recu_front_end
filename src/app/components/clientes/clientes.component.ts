@@ -17,7 +17,12 @@ export class ClientesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // mataccordion para el panel de expansión de agregar cliente
   @ViewChild(MatAccordion) accordion!: MatAccordion;
+  // mataccordion para el panel de expansión de editar cliente
+  //@ViewChild(MatAccordion) accordionEdit!: MatAccordion;
+
+  showFiller = false;
 
   //instanciamos la clase Cliente
   arrayClientes: Cliente[] = [
@@ -87,9 +92,11 @@ export class ClientesComponent implements OnInit {
     this.arrayClientes.splice(this.arrayClientes.indexOf(cliente),1);
   }
 
-  //funcion encargada de editar una persona
-  editPersona() {
 
+  //funcion encargada de editar una persona
+  editPersona(cliente: Cliente) {
+    this.deletePersona(cliente);
+    this.addPersona(cliente.ruc, cliente.nombre, cliente.email)
   }
 
 }

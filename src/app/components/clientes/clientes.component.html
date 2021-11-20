@@ -10,12 +10,44 @@
             <mat-card-subtitle>email: {{ cliente.email }}</mat-card-subtitle>
             <img mat-card-sm-image src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAHChMQDRMQEA8KDQoQDQ8NDQ8IEA0KGBEWFhYRExkYHCgsGCYlGxMfITEhMSk6MC4uFx8zODssNyg5LjcBCgoKDQ0NDg0NDisZFRkrNysrKysrKysrKysrKzcrKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAJYAlgMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAQUCAwQGB//EADMQAAIBAgMFBgUDBQAAAAAAAAABAgMRBCExBRJBUXETUoGRobFCYXLB8CJi0RUyM5Lh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwD6YADTIAAAAAABK4AHTTwNSfC31PdNn9Mnzj5v+AOIHTPA1IcL9GpHPJOLs8nyeQEAAAAAAAAAAAAAAAAAGVOO/JLvOK9bAdWFwDrLek7J6cW0WOHwscPpm+bzZuS3VZaK3kZGdaAABBqr0I11aS6PRrobgBQ4rDvDys809HzRoL7F0e3ptcdY/UUJqIAAIAAAAAAAAAAAbsHnWj9Ufc0m7B/5o/VEC/IAMtJIAAAAAUGKjuVZL90vK9y7rz7Km5LWKb8ShqTdSTb1k7vgWJWIAKgAAAAAAAAAABtwrtVj9cfdGo79mYdVbyl8MlbNrPW4VagAyqSCSAAAA0Y92oS6L3KI9DVpqrHdlo7fLjcoa8OyqOPdbXgWJWAAKgAAAAAAAAAABY7InnKPNJ/Z+5XG3C1uwqKXDNO3dA9AQY0qiqxUlo9DIy0kgkgAAADyPO1Z782+85P1LfaOIVKG78U07fJc2UxYlAAVAAAAAAAAAAAAABb7Kqb1Nx4wfodpRYOs6NRNaPJr5XL0lWAJBFQAa8RU7Km5d1PzAqdpT36z/alHxOUlved3q7t9SDSAACAAAAAAAAAAAAADZhlvVY/OUfK6PQIptmU9+tfhBN+P4/QuiVYAAioNWKW9Skv2y9jaGrrqB5sGVWHZza5Nr1MTTIAAAAAAAAAAABvw+EnX0Vl3nkvDmBoOjD4OdfRWXN5eXMscPgIUs3+p/PTyOsmrjThsOsPGy1er5s3kAipBAAAADkxmCVfNZS9H1KqtQlRdpK3qn0PQESipKzzT4OzLqY84C0xGzVLOGT5PNf8ACuq0ZUXaSt+cOZUYAAAAABnTpurK0Vdv8u+RjGLm0lm5NJdS9wuHWHjZavV82Bow2z4085/qfLgv5O1ZEgy0AAAAAAAAgAAAAAInBTVpK6fB5kgCsxWzrZ0/9X9iuat+WPSHDtHC78d+P90dbcUWVMVIAKjt2VDeq3fwRbXXT7lwASrAAEUAAAAAAAAAAAAAAAAI1AA8/Xh2dSSXwykl0uADTL//2Q==">
           </mat-card-title-group>
-          <button mat-mini-fab color="primary" (click)="editPersona()">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-mini-fab color="primary" (click)="deletePersona(cliente)">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <!--(click)="editPersona(cliente)"-->
+          <mat-drawer-container class="example-container" autosize>
+
+            <mat-drawer #drawer class="example-sidenav" mode="side">
+              <mat-form-field appearance="outline">
+                <mat-label>Nuevo nombre</mat-label>
+                <input matInput [formControl]="nombre">
+                <mat-error *ngIf="nombre.invalid">{{getErrorName()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Nuevo RUC</mat-label>
+                <input matInput [formControl]="ruc">
+                <mat-error *ngIf="ruc.invalid">{{getErrorRuc()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Nuevo email</mat-label>
+                <input matInput [formControl]="email">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <button mat-raised-button type="submit" color="primary" (click)="editPersona(cliente)">Actualizar</button>
+            </mat-drawer>
+
+            <div class="example-sidenav-content">
+              <p>
+                <br>
+                <button mat-mini-fab color="primary" (click)="drawer.toggle()">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" (click)="deletePersona(cliente)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <br>
+              </p>
+            </div>
+
+          </mat-drawer-container>
+
+
         </mat-card>
       </li>
     </ul>
