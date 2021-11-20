@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import {Producto} from "../../models/producto";
+import {ProductosService} from "../../services/productos.service";
 
 @Component({
   selector: 'app-productos',
@@ -9,20 +9,18 @@ import {Producto} from "../../models/producto";
 })
 export class ProductosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productosService: ProductosService) { }
 
   ngOnInit(): void {
+      this.productosArray = this.productosService.getProductos();
   }
-
-  public productosArray: Producto[] = [
-    {codigo: 123, nombre: "Tornillo", precio: 12, existencia: 12}
-  ]
-
+  public productosArray: Producto[] = [];
   selectedProducto: Producto = new Producto();
 
   addOrEdit(){
     // Variable para control de error
     let error = false;
+    this.productosArray = this.productosArray = this.productosService.getProductos();
 
     //Si el producto no existe, o sea, si no es una edicion
     if(!this.productosArray.includes(this.selectedProducto)){
@@ -74,7 +72,8 @@ export class ProductosComponent implements OnInit {
         }
       }
       if(!error){
-        this.productosArray.push(this.selectedProducto);
+        this.productosService.setProductos(this.selectedProducto);
+        this.productosArray = this.productosService.getProductos();
       }
     }
     if(!error){
@@ -86,14 +85,12 @@ export class ProductosComponent implements OnInit {
     this.selectedProducto = producto;
   }
 
-  getArray(){
-    return this.productosArray
-  }
 
   delete(producto: Producto){
     if(confirm("Desea eliminar?")){
       this.selectedProducto = producto;
-      this.productosArray = this.productosArray.filter(x => x != this.selectedProducto);
+      this.productosService.deleteProducto(this.selectedProducto);
+      this.productosArray = this.productosService.getProductos();
       this.selectedProducto = new Producto();
     }
   }
