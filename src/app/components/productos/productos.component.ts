@@ -54,28 +54,28 @@ export class ProductosComponent implements OnInit {
       }
       if(!error){
         // Error de código
-        if(this.selectedProducto.codigo <= 0){
+        if(this.selectedProducto.codigo! <= 0 || this.selectedProducto.codigo==null){
           alert("Código no válido")
           error = true;
         }
       }
       if(!error){
         // Error de nombre
-        if(this.selectedProducto.nombre == ''){
+        if(this.selectedProducto.nombre == '' || this.selectedProducto.nombre==null){
           alert("Nombre no válido")
           error = true;
         }
       }
       if(!error){
         // Error de precio
-        if(this.selectedProducto.precio <= 0){
+        if(this.selectedProducto.precio! <= 0 || this.selectedProducto.precio==null){
           alert("Precio no válido")
           error = true;
         }
       }
       if(!error){
         // Error de cantidad
-        if(this.selectedProducto.existencia < 0){
+        if(this.selectedProducto.existencia! < 0 || this.selectedProducto.existencia==null){
           alert("Cantidad no válida")
           error = true;
         }

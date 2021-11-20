@@ -16,7 +16,7 @@ export class ProductosService {
 
     getProductos(){
       return this.productosArray.sort(function(a: Producto, b: Producto) {
-        return a.codigo - b.codigo;
+        return a.codigo! - b.codigo!;
       });
     }
 
