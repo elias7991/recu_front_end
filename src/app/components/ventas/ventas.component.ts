@@ -49,12 +49,21 @@ export class VentasComponent implements OnInit {
   
 
   submit(){
+    //obtener producto con el string
     this.detalle.producto = this.productosService.getProductoByName(this.producto);
+    //calcular total del detalle
     this.detalle.total_detalle = this.detalle.producto.precio * this.detalle.cantidad;
+    //cargar en el array de detalles
     this.detalles.push({...this.detalle});
+    //calcula el total hasta ahora
     this.calculartotal();
-    this.table.renderRows();
-    console.log(this.detalles[0].total_detalle);
+    //renderiza de nuevo la tabla de detalles
+    try{
+      this.table.renderRows();
+    }catch(e){
+      console.log(e);
+    }
+    //cerear los ng models
     this.detalle = new detalleVenta();
     this.producto = "";
     this.clientes$ = this.clientesService.getClientes();
@@ -83,7 +92,8 @@ export class VentasComponent implements OnInit {
   comprar(){
     var venta : Venta;
     var cliente = this.clientesService.getClienteByName(this.cliente);
-    venta = {id : Math.round(Math.random()*100), fecha: new Date(Date.now()), cliente: cliente,detalles:this.detalles, total: this.totalhastaahora,factura_num: (Math.random() * 999999+100000).toFixed(0)}
+    var id = Math.round(Math.random()*100000);
+    venta = {id : id, fecha: new Date(Date.now()), cliente: cliente,detalles:this.detalles, total: this.totalhastaahora,factura_num: (Math.random() * 999999+100000).toFixed(0)}
     this.ventasService.setVentas({...venta});
     this.detalles = [];
     this.cliente = "";
@@ -97,4 +107,11 @@ export class VentasComponent implements OnInit {
     this.table.renderRows();
     this.totalhastaahora = 0;
   }
+
+  borrarDetalle(id : number){
+    this.detalles = this.detalles.filter((detalle) => detalle.id != id);
+  }
 }
+
+  
+

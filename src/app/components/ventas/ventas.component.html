@@ -7,7 +7,7 @@
     type="text"
     [matAutocomplete]="autocliente"
     matInput placeholder="Ingrese el Cliente">
-
+    
     <mat-autocomplete #autocliente="matAutocomplete">
         <mat-option *ngFor="let cliente of clientes$" [value]="cliente.nombre">
           {{cliente.nombre}}
@@ -45,15 +45,15 @@
 </div>
 
 <mat-card-actions >
-    <button mat-fab color="primary" (click)="submit()">
+    <button mat-fab type="submit" color="primary" (click)="submit()">
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-fab color="primary" (click)="limpiar()">
+    <button mat-fab type="reset" color="primary" (click)="limpiar()">
       <mat-icon>cancel</mat-icon>
     </button>
   </mat-card-actions>
 
-  <div *ngIf="detallesvacios()">
+  
     <table mat-table [dataSource]="detalles" class="mat-elevation-z8 demo-table" >
         <!-- Name Column -->
         <ng-container matColumnDef="Producto">
@@ -82,14 +82,14 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-
+    <div *ngIf="detallesvacios()">
       <p class="mat-body"> Total: {{ totalhastaahora }} gs.</p>
 
       <mat-card-actions >
-        <button class="comprar" mat-fab color="primary" (click)="comprar()">
+        <button type="submit" class="comprar" mat-fab color="primary" (click)="comprar()">
           <mat-icon>shopping_cart</mat-icon>
         </button>
-        <button class="cancelarcompra"mat-fab color="primary" (click)="limpiarcanasta()">
+        <button type="reset" class="cancelarcompra"mat-fab color="primary" (click)="limpiarcanasta()">
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-card-actions>
