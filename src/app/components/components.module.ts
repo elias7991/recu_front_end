@@ -13,18 +13,21 @@ import { MatFormFieldModule,} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { VentasComponent } from './ventas/ventas.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
-import {MatTableModule} from '@angular/material/table'; 
+import {MatTableModule} from '@angular/material/table';
+import { ResumenventaComponent } from './resumenventa/resumenventa.component'; 
 
 @NgModule({
   declarations: [
     ProductosComponent,
     ClientesComponent,
-    VentasComponent
+    VentasComponent,
+    ResumenventaComponent
   ],
   exports: [
     ClientesComponent,
     ProductosComponent,
-    VentasComponent
+    VentasComponent,
+    ResumenventaComponent
   ],
   imports: [
     CommonModule,

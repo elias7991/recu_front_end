@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-content>
+        <ul>
+            <li *ngFor = "let venta of VentasArray">
+                <mat-card class="example-card">
+                    <mat-card-title-group>
+                      <mat-card-title class="Titulo">Cliente: {{venta.cliente.nombre}}</mat-card-title>
+                      <mat-card-subtitle>Fecha: {{venta.fecha}}</mat-card-subtitle>
+                      <mat-card-subtitle>Total Venta: {{venta.total}}</mat-card-subtitle>
+                      <mat-card-subtitle>Factura: {{venta.factura_num}}</mat-card-subtitle>
+                    </mat-card-title-group>
+                    <mat-card-content>
+                    </mat-card-content>
+                  </mat-card>
+            </li>
+        </ul>
+    </mat-card-content>
+</mat-card>
