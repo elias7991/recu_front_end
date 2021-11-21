@@ -30,7 +30,7 @@ export class ClientesComponent implements OnInit {
     {ruc: "1234567-1", nombre: "Ever Garay", email: "ejemplo2@ejemplo.com"},
     {ruc: "7654321-3", nombre: "Marcelo Molas", email: "ejemplo3@ejemplo.com"},
     {ruc: "6985346-2", nombre: "Carin Martínez", email: "ejemplo4@ejemplo.com"},
-    {ruc: "1435597-2", nombre: "Melani Bazan", email: "ejemplo2@ejemplo.com"},
+    {ruc: "1435597-2", nombre: "Melani Bazan", email: "ejemplo5@ejemplo.com"},
   ];
 
 
@@ -115,6 +115,7 @@ export class ClientesComponent implements OnInit {
     this.nombre.reset();
     this.ruc.reset();
     this.email.reset();
+    alert("Se ha creado exitosamente");
   }
 
   //funcion encargada de eliminar un cliente
@@ -125,8 +126,20 @@ export class ClientesComponent implements OnInit {
 
   //funcion encargada de editar una persona
   editPersona(cliente: Cliente) {
-    this.deletePersona(cliente);
-    this.addPersona(cliente.ruc, cliente.nombre, cliente.email)
+    if(this.editRuc.value != ""
+      && this.editNombre.value != ""
+      && this.editEmail.value != ""){
+      if(cliente.nombre==this.editNombre.value
+        && cliente.ruc==this.editRuc.value
+        && cliente.email==this.editEmail.value) {
+        alert('Cuidado, no ha modificado ningún campo.');
+      } else {
+        this.deletePersona(cliente);
+        this.addPersona(this.editRuc.value, this.editNombre.value, this.editEmail.value);
+      }
+    } else {
+      alert('No puede haber campos nulos');
+    }
   }
 
 }

@@ -18,6 +18,7 @@
                 <mat-label>Nuevo nombre</mat-label>
                 <input matInput [formControl]="editNombre">
                 <mat-error *ngIf="editNombre.invalid">{{getEditErrorName()}}</mat-error>
+                <mat-error *ngIf="editNombre.value == cliente.nombre">Nombre no fue modificado</mat-error>
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Nuevo RUC</mat-label>
