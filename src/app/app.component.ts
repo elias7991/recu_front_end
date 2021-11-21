@@ -13,5 +13,4 @@ export class AppComponent {
 
   //instanciamos la clase Cliente
   //arrayClientes: Cliente[] = [];
-
 }
