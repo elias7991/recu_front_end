@@ -16,18 +16,18 @@
             <mat-drawer #drawer class="example-sidenav" mode="side">
               <mat-form-field appearance="outline">
                 <mat-label>Nuevo nombre</mat-label>
-                <input matInput [formControl]="nombre">
-                <mat-error *ngIf="nombre.invalid">{{getErrorName()}}</mat-error>
+                <input matInput [formControl]="editNombre">
+                <mat-error *ngIf="editNombre.invalid">{{getEditErrorName()}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Nuevo RUC</mat-label>
-                <input matInput [formControl]="ruc">
-                <mat-error *ngIf="ruc.invalid">{{getErrorRuc()}}</mat-error>
+                <input matInput [formControl]="editRuc">
+                <mat-error *ngIf="editRuc.invalid">{{getEditErrorRuc()}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Nuevo email</mat-label>
-                <input matInput [formControl]="email">
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                <input matInput [formControl]="editEmail">
+                <mat-error *ngIf="editEmail.invalid">{{getEditErrorMessage()}}</mat-error>
               </mat-form-field>
               <button mat-raised-button type="submit" color="primary" (click)="editPersona(cliente)">Actualizar</button>
             </mat-drawer>
