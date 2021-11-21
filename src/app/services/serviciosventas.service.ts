@@ -32,6 +32,18 @@ export class ServiciosventasService {
       this.VentasArray = this.VentasArray.filter(x => x != Venta);
     }
 
+    filtrarCliente(cliente: Cliente){
+      var clienteArray: Venta[] = [];
+      for(let venta of this.VentasArray){
+        if(venta.cliente.nombre == cliente.nombre){
+          if(!clienteArray.includes(venta)){
+            clienteArray.push(venta)
+          }
+        }
+      } 
+      return clienteArray
+    }
+
     filtrarProducto(producto: Producto){
       var ventasProducto: Venta[] = [];
       for(let venta of this.VentasArray){
