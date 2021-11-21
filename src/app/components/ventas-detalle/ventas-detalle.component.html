@@ -1,0 +1,69 @@
+<!--<mat-label>Select me</mat-label>
+<mat-select placeholder="Seleccione una opcion" [(ngModel)]="ProductosArray">
+<mat-option *ngFor="let option of ProductosArray" [value]="option">{{option.nombre}}</mat-option>
+</mat-select>-->
+
+<mat-form-field appearance="fill">
+    <mat-label>Seleccione un producto</mat-label>
+    <mat-select [(ngModel)]="producto" >
+      <mat-option *ngFor="let option of ProductosArray" [value]="option">
+        {{option.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-mini-fab color="primary" (click)="flitrarProducto()">
+    <mat-icon>search</mat-icon>
+  </button>
+<mat-form-field appearance="fill">
+  <mat-label>Fecha desde</mat-label>
+  <input matInput [matDatepicker]="picker1" [(ngModel)]="fecha1">
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Fecha hasta</mat-label>
+  <input matInput [matDatepicker]="picker2" [(ngModel)]="fecha2">
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
+  <button mat-mini-fab color="primary" (click)="filtrarFecha()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <H3>Limpiar busqueda</H3>
+  <button mat-mini-fab color="primary" (click)="sinFlitrar()">
+    <mat-icon>clear</mat-icon>
+  </button>
+<mat-card>
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let venta of VentasArray">
+        <mat-card class="example-card">
+          <mat-card-title-group>
+            <mat-card-title>{{ venta.factura_num }} - {{ venta.cliente.nombre }}</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+            <mat-card-subtitle><b>Fecha: </b>{{ venta.fecha.getDate() +1 }}/{{ venta.fecha.getMonth() + 1 }}/{{ venta.fecha.getFullYear()}}</mat-card-subtitle>
+            <mat-card-subtitle><b>Ruc: </b>{{ venta.cliente.ruc }}</mat-card-subtitle>
+          </mat-card-title-group>
+          <mat-card-title>Detalle de ventas</mat-card-title>
+            <div *ngFor= "let productos of venta.detalles " >
+              <br>
+
+              <mat-card-subtitle><b>Codigo: </b>{{ productos.producto.codigo }}</mat-card-subtitle>
+              <mat-card-subtitle><b>Nombre: </b>{{ productos.producto.nombre }}</mat-card-subtitle>
+              <mat-card-subtitle><b>Cantidad: </b>{{ productos.cantidad }}</mat-card-subtitle>
+              <mat-card-subtitle><b>Total detalle: </b>{{ productos.total_detalle }}</mat-card-subtitle>
+            </div>
+            <br>
+            <mat-card-subtitle><b>Total: {{ venta.total }}</b></mat-card-subtitle>
+        </mat-card>
+      </li>
+
+    </ul>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

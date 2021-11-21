@@ -12,20 +12,27 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatFormFieldModule,} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { VentasComponent } from './ventas/ventas.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
-import {MatTableModule} from '@angular/material/table'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatTableModule} from '@angular/material/table';
+import { VentasDetalleComponent } from './ventas-detalle/ventas-detalle.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
     ProductosComponent,
     ClientesComponent,
-    VentasComponent
+    VentasComponent,
+    VentasDetalleComponent
   ],
-  exports: [
-    ClientesComponent,
-    ProductosComponent,
-    VentasComponent
-  ],
+    exports: [
+        ClientesComponent,
+        ProductosComponent,
+        VentasComponent,
+        VentasDetalleComponent
+    ],
   imports: [
     CommonModule,
     MatCardModule,
@@ -39,10 +46,13 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class ComponentsModule {
 
- 
+
  }
