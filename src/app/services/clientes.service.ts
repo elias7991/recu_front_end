@@ -20,6 +20,10 @@ export class ClientesService {
     return this.ClientesArray.filter(value => value.nombre.includes(src));
   }
 
+  getClienteByName(src : string) {
+    return this.ClientesArray.filter(value => value.nombre.includes(src))[0];
+  }
+
   getClientes(){
     return this.ClientesArray;
   }

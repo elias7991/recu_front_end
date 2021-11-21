@@ -82,5 +82,15 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
       <p class="mat-body"> Total: {{ totalhastaahora }} gs.</p>
+
+      <mat-card-actions >
+        <button class="comprar" mat-fab color="primary" (click)="comprar()">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button class="cancelarcompra"mat-fab color="primary" (click)="limpiarcanasta()">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-card-actions>
   </div>

@@ -5,6 +5,7 @@ import { ProductosService } from 'src/app/services/productos.service';
 import { detalleVenta } from 'src/app/models/detalle';
 import { Venta } from 'src/app/models/ventas';
 import { MatTable } from '@angular/material/table';
+import { ServiciosventasService } from 'src/app/services/serviciosventas.service';
 
 @Component({
   selector: 'app-ventas',
@@ -18,12 +19,11 @@ export class VentasComponent implements OnInit {
   public producto: string=""
   public productos$:any;
   public detalle!: detalleVenta;
-  public venta!: Venta;
   public detalles!: Array<detalleVenta>;
   public displayedColumns: string[] = ['Producto','Precio', 'Cantidad', 'Total'];
   public totalhastaahora : number = 0;
 
-  constructor(private clientesService : ClientesService, private productosService : ProductosService) { }
+  constructor(private clientesService : ClientesService, private productosService : ProductosService, private ventasService: ServiciosventasService) { }
 
   @ViewChild(MatTable) table!: MatTable<Array<detalleVenta>>;
 
@@ -31,7 +31,6 @@ export class VentasComponent implements OnInit {
     this.clientes$ = this.clientesService.getClientes();
     this.productos$ = this.productosService.getProductos();
     this.detalle = new detalleVenta();
-    this.venta = new Venta();
     this.detalles = [];
   }
 
@@ -79,5 +78,23 @@ export class VentasComponent implements OnInit {
 
   detallesvacios(){
     return this.detalles.length != 0;
+  }
+
+  comprar(){
+    var venta : Venta;
+    var cliente = this.clientesService.getClienteByName(this.cliente);
+    venta = {id : Math.round(Math.random()*100), fecha: new Date(Date.now()), cliente: cliente,detalles:this.detalles, total: this.totalhastaahora,factura_num: (Math.random() * 999999+100000).toFixed(0)}
+    this.ventasService.setVentas({...venta});
+    this.detalles = [];
+    this.cliente = "";
+    this.table.renderRows();
+    this.totalhastaahora = 0;
+    console.log(this.ventasService.getVentas());
+  }
+
+  limpiarcanasta(){
+    this.detalles = [];
+    this.table.renderRows();
+    this.totalhastaahora = 0;
   }
 }
