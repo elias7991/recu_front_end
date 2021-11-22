@@ -52,7 +52,7 @@ export class VentasComponent implements OnInit {
     //obtener producto con el string
     this.detalle.producto = this.productosService.getProductoByName(this.producto);
     //calcular total del detalle
-    this.detalle.total_detalle = this.detalle.producto.precio * this.detalle.cantidad;
+    this.detalle.total_detalle = this.detalle.producto.precio! * this.detalle.cantidad;
     //cargar en el array de detalles
     this.detalles.push({...this.detalle});
     //calcula el total hasta ahora
