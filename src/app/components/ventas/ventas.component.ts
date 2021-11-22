@@ -95,6 +95,7 @@ export class VentasComponent implements OnInit {
     var id = Math.round(Math.random()*100000);
     venta = {id : id, fecha: new Date(Date.now()), cliente: cliente,detalles:this.detalles, total: this.totalhastaahora,factura_num: (Math.random() * 999999+100000).toFixed(0)}
     this.ventasService.setVentas({...venta});
+    alert("Venta realizada!!!!!!!");
     this.detalles = [];
     this.cliente = "";
     this.table.renderRows();
