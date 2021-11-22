@@ -27,4 +27,12 @@ export class ClientesService {
   getClientes(){
     return this.ClientesArray;
   }
+
+  setClientes(cliente: Cliente){
+    this.ClientesArray.push(cliente)
+  }
+
+  deleteCliente(Cliente: Cliente){
+    this.ClientesArray = this.ClientesArray.filter(x => x != Cliente);
+  }
 }

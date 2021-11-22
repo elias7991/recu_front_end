@@ -3,6 +3,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { Cliente } from "../../models/cliente";
 import { MatAccordion } from "@angular/material/expansion";
 import { FormControl, Validators } from "@angular/forms";
+import { ClientesService } from 'src/app/services/clientes.service';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { FormControl, Validators } from "@angular/forms";
 })
 export class ClientesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private clienteServicios: ClientesService) { }
 
   ngOnInit(): void {
+    this.arrayClientes = this.clienteServicios.getClientes();
   }
 
   // mataccordion para el panel de expansión de agregar cliente
@@ -25,13 +27,7 @@ export class ClientesComponent implements OnInit {
   showFiller = false;
 
   //instanciamos la clase Cliente
-  arrayClientes: Cliente[] = [
-    {ruc: "1832131-2", nombre: "Elias Cáceres", email: "ejemplo1@ejemplo.com"},
-    {ruc: "1234567-1", nombre: "Ever Garay", email: "ejemplo2@ejemplo.com"},
-    {ruc: "7654321-3", nombre: "Marcelo Molas", email: "ejemplo3@ejemplo.com"},
-    {ruc: "6985346-2", nombre: "Carin Martínez", email: "ejemplo4@ejemplo.com"},
-    {ruc: "1435597-2", nombre: "Melani Bazan", email: "ejemplo5@ejemplo.com"},
-  ];
+  arrayClientes!: Cliente[];
 
 
   step = 0;
@@ -115,7 +111,7 @@ export class ClientesComponent implements OnInit {
       alert('Ningun campo debe ser nulo');
     }
     else{
-      this.arrayClientes.push({ruc: ruc, nombre: nombre, email: email});
+      this.clienteServicios.setClientes({ruc: ruc, nombre: nombre, email: email});
       this.nombre.reset();
       this.ruc.reset();
       this.email.reset();
@@ -125,7 +121,7 @@ export class ClientesComponent implements OnInit {
 
   //funcion encargada de eliminar un cliente
   deletePersona(cliente: Cliente) {
-    this.arrayClientes.splice(this.arrayClientes.indexOf(cliente),1);
+    this.clienteServicios.deleteCliente(cliente);
   }
 
 

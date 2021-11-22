@@ -52,6 +52,9 @@ export class VentasComponent implements OnInit {
     if(this.cliente == "" || this.producto == "" || this.detalle.cantidad == undefined){
       alert("No se debe dejar campos vacios!!!!");
     }
+    else if(this.detalle.cantidad <= 0){
+      alert("No puede ser negativo o cero!!!!");
+    }
     else{
       //obtener producto con el string
       this.detalle.producto = this.productosService.getProductoByName(this.producto);
@@ -96,9 +99,10 @@ export class VentasComponent implements OnInit {
 
   comprar(){
     var venta : Venta;
-    if(this.cliente = ""){
+    if(this.cliente == ""){
       alert("Debe seleccionarse un cliente!!");
     }else{
+      console.log(this.cliente);
       var cliente = this.clientesService.getClienteByName(this.cliente);
       var id = Math.round(Math.random()*100000);
       venta = {id : id, fecha: new Date(Date.now()), cliente: cliente,detalles:this.detalles, total: this.totalhastaahora,factura_num: (Math.random() * 999999+100000).toFixed(0)}
