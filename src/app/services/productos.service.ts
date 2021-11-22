@@ -29,11 +29,11 @@ export class ProductosService {
     }
 
     getProductosByName(src : string) {
-      return this.productosArray.filter(value => value.nombre.includes(src));
+      return this.productosArray.filter(value => value.nombre!.includes(src));
     }
 
     getProductoByName(src : string) {
-      return this.productosArray.filter(value => value.nombre.includes(src))[0];
+      return this.productosArray.filter(value => value.nombre!.includes(src))[0];
     }
 
 }
