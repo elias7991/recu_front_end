@@ -49,25 +49,30 @@ export class VentasComponent implements OnInit {
   
 
   submit(){
-    //obtener producto con el string
-    this.detalle.producto = this.productosService.getProductoByName(this.producto);
-    //calcular total del detalle
-    this.detalle.total_detalle = this.detalle.producto.precio! * this.detalle.cantidad;
-    //cargar en el array de detalles
-    this.detalles.push({...this.detalle});
-    //calcula el total hasta ahora
-    this.calculartotal();
-    //renderiza de nuevo la tabla de detalles
-    try{
-      this.table.renderRows();
-    }catch(e){
-      console.log(e);
+    if(this.cliente == "" || this.producto == "" || this.detalle.cantidad == undefined){
+      alert("No se debe dejar campos vacios!!!!");
     }
-    //cerear los ng models
-    this.detalle = new detalleVenta();
-    this.producto = "";
-    this.clientes$ = this.clientesService.getClientes();
-    this.productos$ = this.productosService.getProductos();
+    else{
+      //obtener producto con el string
+      this.detalle.producto = this.productosService.getProductoByName(this.producto);
+      //calcular total del detalle
+      this.detalle.total_detalle = this.detalle.producto.precio! * this.detalle.cantidad;
+      //cargar en el array de detalles
+      this.detalles.push({...this.detalle});
+      //calcula el total hasta ahora
+      this.calculartotal();
+      //renderiza de nuevo la tabla de detalles
+      try{
+        this.table.renderRows();
+      }catch(e){
+        console.log(e);
+      }
+      //cerear los ng models
+      this.detalle = new detalleVenta();
+      this.producto = "";
+      this.clientes$ = this.clientesService.getClientes();
+      this.productos$ = this.productosService.getProductos();
+    }
   }
 
   calculartotal(){
@@ -91,16 +96,20 @@ export class VentasComponent implements OnInit {
 
   comprar(){
     var venta : Venta;
-    var cliente = this.clientesService.getClienteByName(this.cliente);
-    var id = Math.round(Math.random()*100000);
-    venta = {id : id, fecha: new Date(Date.now()), cliente: cliente,detalles:this.detalles, total: this.totalhastaahora,factura_num: (Math.random() * 999999+100000).toFixed(0)}
-    this.ventasService.setVentas({...venta});
-    alert("Venta realizada!!!!!!!");
-    this.detalles = [];
-    this.cliente = "";
-    this.table.renderRows();
-    this.totalhastaahora = 0;
-    console.log(this.ventasService.getVentas());
+    if(this.cliente = ""){
+      alert("Debe seleccionarse un cliente!!");
+    }else{
+      var cliente = this.clientesService.getClienteByName(this.cliente);
+      var id = Math.round(Math.random()*100000);
+      venta = {id : id, fecha: new Date(Date.now()), cliente: cliente,detalles:this.detalles, total: this.totalhastaahora,factura_num: (Math.random() * 999999+100000).toFixed(0)}
+      this.ventasService.setVentas({...venta});
+      alert("Venta realizada!!!!!!!");
+      this.detalles = [];
+      this.cliente = "";
+      this.table.renderRows();
+      this.totalhastaahora = 0;
+      console.log(this.ventasService.getVentas());
+    }
   }
 
   limpiarcanasta(){
