@@ -112,16 +112,18 @@ export class ClientesComponent implements OnInit {
     }
     else{
       this.clienteServicios.setClientes({ruc: ruc, nombre: nombre, email: email});
+      //this.arrayClientes.push({ruc: ruc, nombre: nombre, email: email})
       this.nombre.reset();
       this.ruc.reset();
       this.email.reset();
-      alert("Se ha creado exitosamente");
+      alert("Proceso realizado correctamente");
     }
   }
 
   //funcion encargada de eliminar un cliente
   deletePersona(cliente: Cliente) {
-    this.clienteServicios.deleteCliente(cliente);
+    //this.clienteServicios.deleteCliente(cliente);
+    this.arrayClientes.splice(this.arrayClientes.indexOf(cliente),1);
   }
 
 
